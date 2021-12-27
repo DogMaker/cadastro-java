@@ -1,0 +1,39 @@
+micronaut:
+  application:
+    name: cadastro
+  server:
+    port: 8080
+jackson:
+  bean-introspection-module: true
+datasources:
+  default:
+    url: jdbc:mysql://172.18.0.2/clientesDB?generateSimpleParameterMetadata=true&zeroDateTimeBehavior=convertToNull&verifyServerCertificate=false&useSSL=false
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    schema-generate: CREATE_DROP
+    dialect: MYSQL
+    pooled: true
+    maximum-pool-size: 10
+    minimum-idle: 5
+    maximum-idle: 5
+    initial-size: 5
+
+jpa:
+  default:
+    entity-scan:
+      packages: 'com.malves.domain.entities'
+    properties:
+      hibernate:
+        bytecode:
+          provider: none
+        hbm2ddl:
+          auto: validate
+        show_sql: false
+
+flyway:
+  datasources:
+    default:
+      enabled: false
+      baseline-on-migrate: true
+      locations: classpath:migration
