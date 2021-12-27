@@ -1,6 +1,0 @@
-CREATE TABLE person (
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(150) NULL,
-    age INT NULL,
-    CONSTRAINT pk_person PRIMARY KEY(id)
-);
