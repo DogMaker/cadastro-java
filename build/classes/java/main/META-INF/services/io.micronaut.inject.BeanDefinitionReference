@@ -1,0 +1,4 @@
+com.malves.domain.repository.$PersonRepository$Intercepted$Definition$Reference
+com.malves.domain.services.$RegistryService$Definition$Reference
+com.malves.resources.repositories.$PersonRepositoryImpl$Intercepted$Definition$Reference
+com.malves.rest.controllers.$RegistryController$Definition$Reference

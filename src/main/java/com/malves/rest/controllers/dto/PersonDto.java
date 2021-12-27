@@ -1,4 +1,6 @@
-package com.malves.domain.entities;
+package com.malves.rest.controllers.dto;
+
+import com.malves.domain.entities.Person;
 
 public class PersonDto {
 
