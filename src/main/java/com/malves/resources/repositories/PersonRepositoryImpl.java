@@ -2,34 +2,28 @@ package com.malves.resources.repositories;
 
 import com.malves.domain.entities.Person;
 import com.malves.domain.repository.PersonRepository;
+import com.malves.resources.repositories.entities.PersonSchema;
+import io.micronaut.data.annotation.Repository;
+import jakarta.inject.Singleton;
 
-import java.util.List;
+import javax.transaction.Transactional;
 
-public class PersonRepositoryImpl implements PersonRepository {
+@Singleton
+@Transactional
+@Repository
+public class PersonRepositoryImpl {
 
-    @Override
-    public Person getPerson(Long id) {
-        return null;
+    private final PersonRepository personRepository;
+
+    public PersonRepositoryImpl(PersonRepository personRepository) {
+        this.personRepository = personRepository;
     }
 
-    @Override
-    public List<Person> getListPersons() {
-        return null;
+    public Person savePerson(Person person) {
+        return personRepository.save(
+                new PersonSchema(
+                        person.getName(),
+                        person.getAge()
+                )).toPerson();
     }
-
-    @Override
-    public void savePerson(Person person) {
-
-    }
-
-    @Override
-    public void updatePerson(Person person) {
-
-    }
-
-    @Override
-    public void deletePerson(Long id) {
-
-    }
-
 }

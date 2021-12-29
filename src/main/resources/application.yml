@@ -7,7 +7,7 @@ jackson:
   bean-introspection-module: true
 datasources:
   default:
-    url: jdbc:mysql://172.18.0.2/clientesDB?generateSimpleParameterMetadata=true&zeroDateTimeBehavior=convertToNull&verifyServerCertificate=false&useSSL=false
+    url: jdbc:mysql://172.20.0.2/clientesDB?generateSimpleParameterMetadata=true&zeroDateTimeBehavior=convertToNull&verifyServerCertificate=false&useSSL=false
     driverClassName: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
@@ -22,7 +22,7 @@ datasources:
 jpa:
   default:
     entity-scan:
-      packages: 'com.malves.domain.entities'
+      packages: 'com.malves.resources.repositories.entities'
     properties:
       hibernate:
         bytecode:
@@ -32,8 +32,8 @@ jpa:
         show_sql: false
 
 flyway:
+  enabled: true
   datasources:
     default:
-      enabled: false
       baseline-on-migrate: true
       locations: classpath:migration
