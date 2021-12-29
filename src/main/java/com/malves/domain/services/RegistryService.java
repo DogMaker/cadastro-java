@@ -2,7 +2,6 @@ package com.malves.domain.services;
 
 import com.malves.domain.RegistryInterface;
 import com.malves.domain.entities.Person;
-import com.malves.domain.repository.PersonRepository;
 import com.malves.resources.repositories.PersonRepositoryImpl;
 import io.micronaut.context.annotation.Primary;
 import jakarta.inject.Singleton;
@@ -18,7 +17,7 @@ public class RegistryService implements RegistryInterface {
     }
 
     @Override
-    public void savePerson(Person person) {
-        personRepository.savePerson(person);
+    public Person savePerson(Person person) {
+        return personRepository.savePerson(person);
     }
 }

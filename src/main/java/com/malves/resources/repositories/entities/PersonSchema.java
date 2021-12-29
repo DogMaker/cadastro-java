@@ -8,7 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.Random;
 
 
 @Entity(name = "Person")
@@ -18,13 +17,6 @@ public class PersonSchema {
     }
 
     public PersonSchema(String name, int age) {
-        this(1L, name, age);
-    }
-
-    public PersonSchema(Long id, String name, int age) {
-        if (id == 1) {
-            this.id = generateId();
-        }
         this.name = name;
         this.age = age;
     }
@@ -63,20 +55,6 @@ public class PersonSchema {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    private Long generateId() {
-        long num = 0;
-        Random random = new Random();
-
-        for (int i = 1; i <= 2; i++) {
-            num = random.nextInt(10000);
-        }
-        return num;
-    }
-
     @Override
     public String toString() {
         ObjectMapper mapper = new ObjectMapper();
@@ -87,5 +65,9 @@ public class PersonSchema {
         } catch (JsonProcessingException e) {
             throw new Error("It not possible to convert as string");
         }
+    }
+
+    public Person toPerson() {
+        return new Person(this.id, this.name, this.getAge());
     }
 }

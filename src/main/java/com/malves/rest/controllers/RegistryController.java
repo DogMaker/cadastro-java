@@ -10,6 +10,7 @@ import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Post;
 
+
 @Controller("/cadastro")
 public class RegistryController {
 
@@ -23,8 +24,9 @@ public class RegistryController {
     @SingleResult
     public HttpResponse<?> registro(@Body PersonDto personDto) {
         Person person = personDto.toPerson();
-        registryInterface.savePerson(person);
+        Person response = registryInterface.savePerson(person);
 
-        return HttpResponse.status(HttpStatus.CREATED).body(person);
+        return HttpResponse.status(HttpStatus.CREATED)
+                .body(response);
     }
 }

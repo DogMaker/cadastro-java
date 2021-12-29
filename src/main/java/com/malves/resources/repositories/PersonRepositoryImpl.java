@@ -7,7 +7,6 @@ import io.micronaut.data.annotation.Repository;
 import jakarta.inject.Singleton;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
 
 @Singleton
 @Transactional
@@ -20,15 +19,11 @@ public class PersonRepositoryImpl {
         this.personRepository = personRepository;
     }
 
-    public Optional<PersonSchema> savePerson(Person person) {
-        return personRepository.findById(person.getId()).map(personId ->
-                personRepository.save(
-                        new PersonSchema(
-                                person.getId(),
-                                person.getName(),
-                                person.getAge()
-                        )
-                )
-        );
+    public Person savePerson(Person person) {
+        return personRepository.save(
+                new PersonSchema(
+                        person.getName(),
+                        person.getAge()
+                )).toPerson();
     }
 }
